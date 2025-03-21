@@ -41,6 +41,7 @@ function submit() {
     })
   }
   if(isSignUp.value === true) {
+    // 发起请求
     http.post('/users/login', form.value).then((req, res) => {
       if(req.data.code === 200) {
         ElMessage({
@@ -118,7 +119,7 @@ function submit() {
       <div class="title">
         <h1>{{ isSignUp ? 'Hello Friend' : 'Sign Up'}}</h1>
         <h2>{{ isSignUp ? '登录' : '注册'}}</h2>
-        <el-button 
+        <el-button
           type="primary" 
           @click="isSignUp = !isSignUp" 
           round
@@ -170,7 +171,7 @@ function submit() {
     max-width: 45rem;
     max-height: 30rem;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 25px;
     // border: 1px solid #ddd;
     margin: auto;
     display: flex;

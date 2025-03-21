@@ -31,7 +31,6 @@ router.post('/login', async (req, res, next) => {
   let body = req.body
   try{
     let { phone, password } = body
-
     let user_phone = await usersModel.findOne({ phone })
     // res.send(user_phone === null)
     if(user_phone === null){
