@@ -30,6 +30,10 @@ const config = require('./config.js')
 // 配置解析 Token 字符串中间件，.unless({ path: [/^\/user/]}) 用来指定哪些路由不需要身份认证
 app.use(expressJWT({secret: config.jwtSecretKey}).unless({ path: [/^\/user/]}))
 
+app.all('/', (req, res) => {
+  res.send('Express + MySQL API')
+})
+
 // 用户管理路由模块
 const UserRouter = require('./router/user')
 app.use('/user', UserRouter)
@@ -45,10 +49,11 @@ app.use((err, req, res, next) => {
   res.cc(err)
 })
 
-app.all('/', (req, res) => {
-  res.send('Express + MySQL API')
-})
+// 个人中心路由模块
+const UserinfoRouter = require('./router/userinfo.js')
+app.use('/my', UserinfoRouter)
 
+// 连接 mysql 数据库
 const db = require('./db/index')
 
 db.query('SELECT 1', (err, result) => {
