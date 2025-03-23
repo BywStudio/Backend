@@ -7,7 +7,7 @@ const userHandler = require('../router_handler/user')
 // 验证表单的中间件
 const expressJoi = require('@escook/express-joi')
 // 验证表单的规则对象
-const { reg_loin_schema, reg_login_schema } = require('../schema/user')
+const { reg_login_schema } = require('../schema/user')
 
 
 
