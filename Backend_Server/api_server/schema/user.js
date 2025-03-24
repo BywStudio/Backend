@@ -20,6 +20,10 @@ const password = Joi.string().pattern(/^[\S]{6,15}$/).required()
 const nickname = Joi.string().required()
 const email = Joi.string().email().required()
 
+// 更新用户头像信息的验证规则
+// dataUri() 指的是 base64 格式的字符串
+const avatar = Joi.string().dataUri().required()
+
 
 
 
@@ -53,4 +57,9 @@ exports.update_pwd_schema = {
     */
     newPwd: Joi.not(Joi.ref('oldPwd')).concat(password)
   }
+}
+
+// 向外共享定义更新用户头像表单数据的验证规则对象
+exports.updata_avatar_schema = {
+  body: { avatar }
 }

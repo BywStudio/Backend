@@ -8,7 +8,7 @@ const UserInfoHandler  = require('../router_handler//userinfo')
 const expressJoi = require('@escook/express-joi')
 
 // 更新用户表单的验证规则对象
-const { update_userinfo_schema, update_pwd_schema } = require('../schema/user')
+const { update_userinfo_schema, update_pwd_schema, updata_avatar_schema } = require('../schema/user')
 
 router.all('/', (req, res) => {
   res.send('个人中心 API')
@@ -22,5 +22,8 @@ router.post('/userinfo', expressJoi(update_userinfo_schema), UserInfoHandler.upd
 
 // 更新用户密码
 router.post('/updatepwd', expressJoi(update_pwd_schema), UserInfoHandler.updatePassword)
+
+// 更新头像
+router.post('/update/avatar', expressJoi(updata_avatar_schema), UserInfoHandler.updateAvatar)
 
 module.exports = router
