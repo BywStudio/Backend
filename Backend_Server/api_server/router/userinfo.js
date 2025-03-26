@@ -26,4 +26,6 @@ router.post('/updatepwd', expressJoi(update_pwd_schema), UserInfoHandler.updateP
 // 更新头像
 router.post('/update/avatar', expressJoi(updata_avatar_schema), UserInfoHandler.updateAvatar)
 
+
+
 module.exports = router

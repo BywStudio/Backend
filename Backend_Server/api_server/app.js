@@ -53,6 +53,10 @@ app.use((err, req, res, next) => {
 const UserinfoRouter = require('./router/userinfo.js')
 app.use('/my', UserinfoRouter)
 
+// 文章分类列表路由模块
+const ArtcateRouter = require('./router/artcate.js')
+app.use('/my/articles', ArtcateRouter)
+
 // 连接 mysql 数据库
 const db = require('./db/index')
 
