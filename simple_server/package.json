@@ -1,0 +1,19 @@
+{
+  "name": "simple_server",
+  "version": "1.0.0",
+  "description": "Vue & React Test Server API",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "author": "BywStudio",
+  "license": "ISC",
+  "dependencies": {
+    "@escook/express-joi": "^1.1.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "mysql": "^2.18.1"
+  }
+}
