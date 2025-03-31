@@ -9,5 +9,5 @@ exports.reg_user_schema = {
 }
 
 exports.login_user_schema = {
-  body: { phone, password}
+  body: { phone, password }
 }
