@@ -36,7 +36,7 @@ exports.loginUser = (req, res) => {
     if(results.length === 0) return res.cc('用户不存在, 请先注册!')
     // 找到了用户，需要比对密码, 需要使用 加密工具进行比对
     const compareResult = bcrypt.compareSync(userInfo.password, results[0].password)
-    if(!compareResult) return res.cc('用户密码错误, 请重新输入密码')
+    if(!compareResult) return res.cc('用户密码错误, 请重新输入密码！')
     // 登录成功之后生成 Token 字符串，不能包含密码、头像等敏感信息
     const user = {...results[0], password: '', avatar: ''}
     const tokenStr = jwt.sign(user, token.jwtSecretKey, {expiresIn: token.expiresIn})
