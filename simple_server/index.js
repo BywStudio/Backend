@@ -27,11 +27,19 @@ app.use((req, res, next) => {
   next()
 })
 
+// 解析 token 字符串
+const expressJWT = require('express-jwt')
+const token = require('./token')
+// 配置解析 Token 字符串中间件，.unless({ path: [/^\/user/]}) 用来指定哪些路由不需要身份认证
+app.use(expressJWT({secret: token.jwtSecretKey}).unless({ path: [/^\/user/]}))
+
 // 验证表单数据错误中间件
 const joi = require('joi')
-app.use((req, res, err, next) => {
+app.use((err, req, res, next) => {
   // 如果是 Joi 的 ValidationError 错误实例，并终止代码运行
-  if(err instanceof Joi.ValidationError) return res.cc(err)
+  if(err instanceof joi.ValidationError) return res.cc(err)
+  // Token 身份认证失败错误
+  if(err.name === 'UnauthorizedError') return res.cc('Token 身份认证失败')
   // 如果是未知的错误
   res.cc(err)
 })

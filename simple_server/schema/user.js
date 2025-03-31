@@ -7,3 +7,7 @@ const password = joi.string().pattern(/^[\S]{6,15}$/).required()
 exports.reg_user_schema = {
   body: { username, phone, password }
 }
+
+exports.login_user_schema = {
+  body: { phone, password}
+}
