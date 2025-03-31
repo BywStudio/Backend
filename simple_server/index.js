@@ -33,7 +33,7 @@ const token = require('./token')
 // 配置解析 Token 字符串中间件，.unless({ path: [/^\/user/]}) 用来指定哪些路由不需要身份认证
 app.use(expressJWT({secret: token.jwtSecretKey}).unless({ path: [/^\/user/]}))
 
-// 验证表单数据错误中间件
+// 验证表单数据错误中间件，错误中间件 err 一定要参数一定要在最前面
 const joi = require('joi')
 app.use((err, req, res, next) => {
   // 如果是 Joi 的 ValidationError 错误实例，并终止代码运行
