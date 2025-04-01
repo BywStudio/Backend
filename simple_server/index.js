@@ -51,8 +51,11 @@ app.all('/', (req, res) => {
 
 // 用户管理路由模块
 const UserRouter = require('./router//user')
-const { extend } = require('joi')
 app.use('/user', UserRouter)
+
+// 个人中心路由模块
+const UserInfoRouter = require('./router/userinfo')
+app.use('/my', UserInfoRouter)
 
 app.listen(9000, () => {
   console.log('http://127.0.0.1:9000')

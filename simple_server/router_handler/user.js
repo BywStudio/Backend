@@ -43,7 +43,8 @@ exports.loginUser = (req, res) => {
     res.send({
       status: 0,
       message: '用户登录成功',
-      token: 'Bearer' + tokenStr
+      token: 'Bearer ' + tokenStr
     })
    })
 }
+
